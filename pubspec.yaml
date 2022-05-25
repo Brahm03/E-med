@@ -38,6 +38,7 @@ dependencies:
   get_storage: ^2.0.3
   hive: ^2.2.1
   bloc: ^8.0.3
+  flutter_bloc: ^8.0.1
 
 dev_dependencies:
   flutter_test:
@@ -62,10 +63,11 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/font/
   #   - images/a_dot_ham.jpeg
 
+  
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -77,10 +79,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: HKfont
+      fonts:
+        - asset: assets/font/HKGrotesk-Italic.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

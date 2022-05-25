@@ -2,10 +2,14 @@ abstract class AuthState {
   AuthState();
 }
 
-class AuthSignUP {
+class AuthSignUP extends AuthState {
   AuthSignUP();
 }
 
-class AuthSignIN {
+class AuthSignIN extends AuthState {
   AuthSignIN();
+}
+
+class AuthConfirmation extends AuthState {
+  AuthConfirmation();
 }
