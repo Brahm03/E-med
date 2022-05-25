@@ -2,6 +2,7 @@ import 'package:emed/core/init/base/base_view.dart';
 import 'package:emed/pages/auth/cubit/auth_cubit.dart';
 import 'package:emed/pages/auth/state/auth_state.dart';
 import 'package:emed/pages/auth/view/pages/confirmation_page.dart';
+import 'package:emed/pages/auth/view/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,6 +25,8 @@ class AuthView extends StatelessWidget {
             return BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
               if (state is AuthConfirmation) {
                 return const ConFirmationView();
+              } else if (state is AuthSignUP) {
+                return SignUpView();
               } else {
                 return Container();
               }

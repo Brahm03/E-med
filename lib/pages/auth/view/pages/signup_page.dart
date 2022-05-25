@@ -1,10 +1,13 @@
 import 'package:emed/core/components/allvalidators.dart';
 import 'package:emed/core/constants/font/FontStyles.dart';
 import 'package:emed/extension/sizeExtension.dart';
+import 'package:emed/pages/auth/cubit/auth_cubit.dart';
+import 'package:emed/pages/auth/state/auth_state.dart';
 import 'package:emed/widgets/appbar.dart';
 import 'package:emed/widgets/buttonWidgets.dart';
 import 'package:emed/widgets/textFormFielda.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpView extends StatelessWidget {
   SignUpView({Key? key}) : super(key: key);
@@ -19,13 +22,23 @@ class SignUpView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: ButtonWidgets(
+          child: Text("Continue"),
+          onPressed: () {
+            if (formKey.currentState!.validate()) {
+              // next page will be emited this position
+              context.read<AuthCubit>().changeState(AuthConfirmation());
+            }
+          },
+          width: context.w * 0.9,
+          height: context.h * 0.07,
+        ),
         body: Column(
           children: [
             Container(
               alignment: Alignment.center,
-              child: Column(
-                children: [AppBarWidget(), Divider(thickness: 1)],
-              ),
+              child: const AppBarWidget(),
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -51,12 +64,13 @@ class SignUpView extends StatelessWidget {
                               controller: nameController,
                               validator: Allvalidators.nameValidator),
                           SizedBox(height: context.h * 0.04),
-                          const Text("Phone number", style: FontStyles.headline3s),
+                          const Text("Phone number",
+                              style: FontStyles.headline3s),
                           SizedBox(height: context.h * 0.01),
                           MyTextField.textField(
                               text: "Enter your phone number...",
                               controller: phoneController,
-                              validator: Allvalidators.emailValidator),
+                              validator: Allvalidators.phoneValidator),
                           SizedBox(height: context.h * 0.01),
                           const Center(
                             child: Text(
@@ -77,16 +91,6 @@ class SignUpView extends StatelessWidget {
                                   },
                                   icon: Icon(Icons.remove_red_eye))),
                           const Spacer(),
-                          ButtonWidgets(
-                            child: Text("Continue"),
-                            onPressed: () {
-                              if (formKey.currentState!.validate()) {
-                                // next page will be emited this position
-                              }
-                            },
-                            width: context.w,
-                            height: context.h * 0.07,
-                          ),
                           SizedBox(height: context.h * 0.04),
                         ],
                       ),
