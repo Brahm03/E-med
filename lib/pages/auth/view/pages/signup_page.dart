@@ -7,6 +7,7 @@ import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/pages/auth/cubit/auth_cubit.dart';
 import 'package:emed/pages/auth/state/auth_state.dart';
 import 'package:emed/widgets/appbar.dart';
+import 'package:emed/widgets/buckbutton.dart';
 import 'package:emed/widgets/buttonWidgets.dart';
 import 'package:emed/widgets/textFormFielda.dart';
 import 'package:flutter/material.dart';
@@ -40,9 +41,7 @@ class SignUpView extends StatelessWidget {
             Container(
               alignment: Alignment.center,
               child: AppBarWidget(
-                onTap: () {
-                  context.read<AuthCubit>().changeState(AuthInitial());
-                },
+                leading: BackButtonWidgets(ontap: () => context.read<AuthCubit>().changeState(AuthInitial())),
               ),
             ),
             Expanded(

@@ -5,10 +5,12 @@ import 'package:emed/extension/sizeExtension.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget {
-  final VoidCallback? onTap;
   final String text;
+  final Widget leading;
+  final Widget trailing;
   const AppBarWidget({
-    this.onTap,
+    this.trailing = const SizedBox(),
+    required this.leading,
     this.text = 'Sign up',
     Key? key,
   }) : super(key: key);
@@ -16,33 +18,20 @@ class AppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: context.h * 0.06,
+      height: context.h * 0.07,
       child: Column(children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            InkWell(
-              onTap: onTap,
-              child: Row(
-                children: const [
-                  Icon(
-                    Icons.chevron_left_outlined,
-                    size: FontSize.extraLarge,
-                    color: ColorConst.kPrimaryColor,
-                  ),
-                  Text(
-                    "Back",
-                    style: FontStyles.headline3sblue,
-                  ),
-                ],
-              ),
-            ),
+            leading,
             const Spacer(),
             Text(text, style: FontStyles.headline2s),
             const Spacer(),
             SizedBox(
               width: context.w * 0.2,
-            )
+            ),
+            Spacer(),
+            trailing
           ],
         ),
         const Divider(

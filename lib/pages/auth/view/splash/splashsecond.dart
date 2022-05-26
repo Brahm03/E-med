@@ -15,6 +15,7 @@ class SplashSecond extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(
         height: context.h * 0.2,
         child: Column(

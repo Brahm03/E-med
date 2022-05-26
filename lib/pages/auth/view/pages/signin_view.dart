@@ -1,9 +1,12 @@
 import 'package:emed/core/components/allvalidators.dart';
 import 'package:emed/core/constants/font/FontStyles.dart';
+import 'package:emed/core/constants/icons/iconConst.dart';
+import 'package:emed/core/constants/radius/RadiusConst.dart';
 import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/pages/auth/cubit/auth_cubit.dart';
 import 'package:emed/pages/auth/state/auth_state.dart';
 import 'package:emed/widgets/appbar.dart';
+import 'package:emed/widgets/buckbutton.dart';
 import 'package:emed/widgets/buttonWidgets.dart';
 import 'package:emed/widgets/textFormFielda.dart';
 import 'package:flutter/material.dart';
@@ -22,13 +25,22 @@ class SignInView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: ButtonWidgets(
+          onPressed: () {
+            if (formKey.currentState!.validate()) {
+              context.read<AuthCubit>().changeState(AuthConfirmation());
+            }
+          },
+          child: const Text("Continue"),
+        ),
         body: Column(
           children: [
             Container(
               alignment: Alignment.center,
-              child: Column(
-                children: [AppBarWidget(text: "Log In"), Divider(thickness: 1),],
-              ),
+              child: AppBarWidget(
+                  leading: BackButtonWidgets(ontap: () => context.read<AuthCubit>().changeState(AuthInitial())),
+                  text: "Log In"),
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -67,25 +79,14 @@ class SignInView extends StatelessWidget {
                                 validator: Allvalidators.passwordValidator,
                                 isShown: context.watch<AuthCubit>().getShown,
                                 iconButton: IconButton(
+                                    splashRadius: RadiuConst.medium,
                                     onPressed: () {
                                       context.read<AuthCubit>().obSecure();
                                       setState(() {});
                                     },
-                                    icon: Icon(Icons.remove_red_eye)));
+                                    icon: const Icon(IconConst.eye)));
                           }),
                           SizedBox(height: context.h * 0.04),
-                          ButtonWidgets(
-                            child: Text("Continue"),
-                            onPressed: () {
-                              if (formKey.currentState!.validate()) {
-                                context
-                                    .read<AuthCubit>()
-                                    .changeState(AuthConfirmation());
-                              }
-                            },
-                            width: context.w,
-                            height: context.h * 0.07,
-                          ),
                         ],
                       ),
                     ),

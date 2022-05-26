@@ -2,6 +2,7 @@ import 'package:emed/core/init/base/base_view.dart';
 import 'package:emed/pages/auth/cubit/auth_cubit.dart';
 import 'package:emed/pages/auth/state/auth_state.dart';
 import 'package:emed/pages/auth/view/pages/confirmation_page.dart';
+import 'package:emed/pages/auth/view/pages/personal_id_view.dart';
 import 'package:emed/pages/auth/view/pages/signin_view.dart';
 import 'package:emed/pages/auth/view/pages/signup_page.dart';
 import 'package:emed/pages/auth/view/splash/splashone.dart';
@@ -36,6 +37,8 @@ class AuthView extends StatelessWidget {
                 return SignInView();
               } else if (state is AuthConfirmation) {
                 return const ConFirmationView();
+              } else if (state is AuthId) {
+                return const PersonalIdView();
               } else {
                 return Container();
               }
