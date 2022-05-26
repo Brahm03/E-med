@@ -1,5 +1,5 @@
-import 'package:emed/core/constants/color/ColorConst.dart';
-import 'package:emed/core/constants/font/FontStyles.dart';
+import 'package:emed/core/constants/color/colorConst.dart';
+import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/core/constants/font/fontsize.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,5 @@
 import 'package:emed/pages/auth/view/auth_view.dart';
+import 'package:emed/pages/home/view/main/home_view.dart';
 import 'package:flutter/material.dart';
 
 class MyRoutes {
@@ -11,6 +12,8 @@ class MyRoutes {
     switch (settings.name) {
       case '/auth':
         return pageReturner(const AuthView());
+      case '/home':
+        return pageReturner(const HomeView());
     }
   }
 

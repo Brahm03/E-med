@@ -1,6 +1,6 @@
-import 'package:emed/core/constants/PM/PMconst.dart';
-import 'package:emed/core/constants/color/ColorConst.dart';
-import 'package:emed/core/constants/font/FontStyles.dart';
+import 'package:emed/core/constants/PM/pMconst.dart';
+import 'package:emed/core/constants/color/colorConst.dart';
+import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/core/constants/icons/iconConst.dart';
 import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/pages/auth/cubit/auth_cubit.dart';

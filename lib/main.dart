@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'E-Med',
       theme: AppTheme.apptheme,
-      initialRoute: '/auth',
+      initialRoute: '/home',
       onGenerateRoute: (settings) => MyRoutes.instance.ongenerateRoute(settings),
     );
   }

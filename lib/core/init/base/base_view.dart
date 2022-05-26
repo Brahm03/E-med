@@ -1,5 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:emed/core/constants/font/FontStyles.dart';
+import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:flutter/material.dart';
 
 class BaseView<T> extends StatefulWidget {

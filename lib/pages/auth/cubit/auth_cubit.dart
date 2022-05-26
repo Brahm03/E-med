@@ -8,7 +8,7 @@ class AuthCubit extends Cubit<AuthState> {
     });
   }
 
-  bool _isShown = false;
+  bool _isShown = true;
 
   get getShown => _isShown;
 

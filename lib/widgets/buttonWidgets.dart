@@ -1,6 +1,6 @@
 import 'package:emed/core/components/ElevetedButtonStyle/ElevetedButtonStyle.dart';
-import 'package:emed/core/constants/color/ColorConst.dart';
-import 'package:emed/core/constants/font/FontStyles.dart';
+import 'package:emed/core/constants/color/colorConst.dart';
+import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';

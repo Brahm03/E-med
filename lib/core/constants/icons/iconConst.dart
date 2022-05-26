@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -7,4 +8,12 @@ class IconConst {
   static SvgPicture bluelogo = SvgPicture.asset('assets/icons/bluelogo.svg');
   static SvgPicture title = SvgPicture.asset('assets/icons/title.svg');
   static SvgPicture id = SvgPicture.asset('assets/icons/id.svg');
+  static SvgPicture person1 = SvgPicture.asset('assets/icons/person.svg');
+  static IconData person = Icons.person;
+  static SvgPicture bell = SvgPicture.asset('assets/icons/bell.svg');
+  static SvgPicture home = SvgPicture.asset('assets/icons/home.svg');
+  static SvgPicture hospital = SvgPicture.asset('assets/icons/hospital.svg');
+  static SvgPicture caseicon = SvgPicture.asset('assets/icons/caseicon.svg');
+  static SvgPicture syringe = SvgPicture.asset('assets/icons/syring.svg');
+
 }

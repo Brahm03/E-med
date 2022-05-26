@@ -1,4 +1,4 @@
-import 'package:emed/core/constants/color/ColorConst.dart';
+import 'package:emed/core/constants/color/colorConst.dart';
 import 'package:emed/core/constants/icons/iconConst.dart';
 import 'package:emed/extension/sizeExtension.dart';
 import 'package:flutter/material.dart';
