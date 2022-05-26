@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static ThemeData get apptheme => ThemeData(
+    splashColor: ColorConst.kPrimaryColor,
       fontFamily: 'HKfont',
       outlinedButtonTheme: OutlinedButtonThemeData(
           style: ButtonStyle(

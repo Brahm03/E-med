@@ -14,7 +14,6 @@ class ConFirmationView extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: ButtonWidgets(
-          width: context.w * 0.8,
           child: const Text('Confirm'),
           onPressed: () {}),
       body: SafeArea(

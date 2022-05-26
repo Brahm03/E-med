@@ -1,8 +1,5 @@
 import 'package:emed/core/components/allvalidators.dart';
-import 'package:emed/core/constants/color/ColorConst.dart';
 import 'package:emed/core/constants/font/FontStyles.dart';
-import 'package:emed/core/constants/icons/iconConst.dart';
-import 'package:emed/core/constants/radius/RadiusConst.dart';
 import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/pages/auth/cubit/auth_cubit.dart';
 import 'package:emed/pages/auth/state/auth_state.dart';
@@ -12,8 +9,8 @@ import 'package:emed/widgets/textFormFielda.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignUpView extends StatelessWidget {
-  SignUpView({Key? key}) : super(key: key);
+class SignInView extends StatelessWidget {
+  SignInView({Key? key}) : super(key: key);
 
   // all formfields will be come from cubit
   TextEditingController nameController = TextEditingController();
@@ -25,24 +22,12 @@ class SignUpView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: ButtonWidgets(
-          onPressed: () {
-            if (formKey.currentState!.validate()) {
-              // next page will be emited this position
-              context.read<AuthCubit>().changeState(AuthConfirmation());
-            }
-          },
-          child: const Text("Continue"),
-        ),
         body: Column(
           children: [
             Container(
               alignment: Alignment.center,
-              child: AppBarWidget(
-                onTap: () {
-                  context.read<AuthCubit>().changeState(AuthInitial());
-                },
+              child: Column(
+                children: [AppBarWidget(text: "Log In"), Divider(thickness: 1),],
               ),
             ),
             Expanded(
@@ -57,17 +42,12 @@ class SignUpView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(height: context.h * 0.04),
-                          const Text(
-                              'Sign up in order to get a full access to the system',
-                              style: FontStyles.headline4s,
-                              textAlign: TextAlign.center),
+                          const Center(
+                            child: Text('Log in to your account',
+                                style: FontStyles.headline4s,
+                                textAlign: TextAlign.center),
+                          ),
                           SizedBox(height: context.h * 0.04),
-                          const Text("Full name", style: FontStyles.headline3s),
-                          SizedBox(height: context.h * 0.01),
-                          MyTextField.textField(
-                              text: "Enter your full name...",
-                              controller: nameController,
-                              validator: Allvalidators.nameValidator),
                           SizedBox(height: context.h * 0.04),
                           const Text("Phone number",
                               style: FontStyles.headline3s),
@@ -76,33 +56,36 @@ class SignUpView extends StatelessWidget {
                               text: "Enter your phone number...",
                               controller: phoneController,
                               validator: Allvalidators.phoneValidator),
-                          SizedBox(height: context.h * 0.01),
-                          const Center(
-                            child: Text(
-                                "We will send confirmation code to this number",
-                                style: FontStyles.headline5s),
-                          ),
-                          SizedBox(height: context.h * 0.035),
-                          const Text("Create password",
+                          SizedBox(height: context.h * 0.04),
+                          const Text("Your password",
                               style: FontStyles.headline3s),
                           SizedBox(height: context.h * 0.01),
                           StatefulBuilder(builder: (context, setState) {
                             return MyTextField.textField(
-                                isShown: context.watch<AuthCubit>().getShown,
                                 text: "Enter your new password...",
                                 controller: passwordController,
                                 validator: Allvalidators.passwordValidator,
+                                isShown: context.watch<AuthCubit>().getShown,
                                 iconButton: IconButton(
-                                    splashRadius: RadiuConst.small,
                                     onPressed: () {
                                       context.read<AuthCubit>().obSecure();
                                       setState(() {});
-                                      // remove_red_eye icon will be worked with cubit
                                     },
-                                    icon: const Icon(IconConst.eye)));
+                                    icon: Icon(Icons.remove_red_eye)));
                           }),
-                          const Spacer(),
                           SizedBox(height: context.h * 0.04),
+                          ButtonWidgets(
+                            child: Text("Continue"),
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                context
+                                    .read<AuthCubit>()
+                                    .changeState(AuthConfirmation());
+                              }
+                            },
+                            width: context.w,
+                            height: context.h * 0.07,
+                          ),
                         ],
                       ),
                     ),

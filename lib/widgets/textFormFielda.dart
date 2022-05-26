@@ -1,4 +1,5 @@
 import 'package:emed/core/constants/color/ColorConst.dart';
+import 'package:emed/core/constants/radius/RadiusConst.dart';
 import 'package:flutter/material.dart';
 
 class MyTextField {
@@ -9,10 +10,12 @@ class MyTextField {
       IconButton? phoneNumber,
       bool read = false,
       var onChanged,
+      bool isShown = false,
       VoidCallback? onTap,
       FormFieldValidator<String>? validator
       }) {
     return TextFormField(
+      obscureText: isShown,
       validator: validator,
       controller: controller,
       readOnly: read,
@@ -26,16 +29,16 @@ class MyTextField {
         fillColor: Colors.white,
         filled: true,
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(25.0),
+          borderRadius: BorderRadius.circular(RadiuConst.large),
           borderSide: const BorderSide(color: ColorConst.kPrimaryColor),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(15.0),
+          borderSide: const BorderSide(color: ColorConst.red),
+          borderRadius: BorderRadius.circular(RadiuConst.medium),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(15.0),
+          borderSide: const BorderSide(color: ColorConst.kPrimaryColor),
+          borderRadius: BorderRadius.circular(RadiuConst.medium),
         ),
       ),
     );

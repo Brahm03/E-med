@@ -21,6 +21,7 @@ class NumberInputWidget extends StatelessWidget {
           border: Border.all(color: ColorConst.blackfortext.withOpacity(0.5)),
           borderRadius: BorderRadius.circular(RadiuConst.small)),
       child: TextFormField(
+        autocorrect: true,
         onChanged: ((value) {
           if (value.length == 1) {
             FocusScope.of(context).nextFocus();
