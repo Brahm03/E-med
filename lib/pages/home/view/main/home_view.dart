@@ -1,7 +1,7 @@
 import 'package:emed/pages/auth/state/auth_state.dart';
 import 'package:emed/pages/home/cubit/home_cubit.dart';
 import 'package:emed/pages/home/state/home_state.dart';
-import 'package:emed/pages/home/view/pages/home_page.dart';
+import 'package:emed/pages/home/view/pages/calendar/home_page.dart';
 import 'package:emed/widgets/navigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
