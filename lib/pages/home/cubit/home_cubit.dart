@@ -1,8 +1,51 @@
 import 'package:bloc/bloc.dart';
 import 'package:emed/pages/home/state/home_state.dart';
+import 'package:emed/service/getstorage.dart';
+import 'package:flutter/material.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(Homemain());
+
+  List<String> regions = [
+    'Tashkent',
+    'Namangan',
+    'Andijan',
+    'Fargana',
+    'Xorazm',
+    'Samarqand',
+    'Buxoro',
+    'Navoiy',
+    'Jizzax',
+    'Qashqadaryo',
+    'Surxandaryo',
+    'Qora qalpogiston'
+  ];
+
+  List<String> district = [
+    'Chilonzor',
+    'Mirzo Ulugbek',
+    'Sergili',
+    'Yakka Saroy',
+    'Shayxontohur',
+    'Olmazor'
+  ];
+
+  List<String> time = ["9 : 00", "12 : 00", "4 : 00", "8 : 00"];
+
+  String? selectedValue;
+
+  addInfo(List item, String value) async {
+    if (item[0] == 'Tashkent') {
+      debugPrint(item.toString());
+      await Storageservice.instance.storage.write('location', value);
+      debugPrint('${Storageservice.instance.storage.read('location')}');
+      }
+  }
+
+  pickValue(String value) {
+    selectedValue = value;
+    emit(BookingState());
+  }
 
   int currentpage = 0;
 
@@ -26,8 +69,5 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  pickMeeting(String value){
-    
-  }
-  
+  pickMeeting(String value) {}
 }

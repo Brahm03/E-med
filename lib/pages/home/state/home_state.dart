@@ -22,7 +22,7 @@ class HospitalState extends HomeState {
   HospitalState();
 }
 
-class BookingState {
+class BookingState extends HomeState{
   BookingState();
 }
 

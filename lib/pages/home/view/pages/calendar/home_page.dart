@@ -1,16 +1,11 @@
 import 'package:emed/core/constants/PM/pMconst.dart';
-import 'package:emed/core/constants/color/colorConst.dart';
 import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/core/constants/icons/iconConst.dart';
-import 'package:emed/core/constants/radius/radiusConst.dart';
 import 'package:emed/core/init/navigator/NavigationService.dart';
 import 'package:emed/extension/sizeExtension.dart';
-import 'package:emed/pages/home/view/pages/calendar/meeting.dart';
-import 'package:emed/pages/home/view/pages/calendar/meetingDateSource.dart';
 import 'package:emed/widgets/appbar.dart';
 import 'package:emed/widgets/calendarwidget.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

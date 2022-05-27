@@ -2,12 +2,15 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:emed/core/constants/PM/pMconst.dart';
 import 'package:emed/core/constants/color/colorConst.dart';
 import 'package:emed/extension/sizeExtension.dart';
+import 'package:emed/pages/home/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DropdownWidgets extends StatelessWidget {
   List items = [];
-  DropdownWidgets({Key? key, required this.items}) : super(key: key);
-  String? selectedValue;
+  String text;
+  DropdownWidgets({required this.text, Key? key, required this.items})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +22,14 @@ class DropdownWidgets extends StatelessWidget {
             itemHeight: context.h * 0.1,
             isExpanded: true,
             hint: Row(
-              children: const [
-                SizedBox(
+              children: [
+                const SizedBox(
                   width: 2,
                 ),
                 Expanded(
                   child: Text(
-                    'Select Item',
-                    style: TextStyle(
+                    text,
+                    style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: ColorConst.kPrimaryColor),
@@ -48,11 +51,10 @@ class DropdownWidgets extends StatelessWidget {
                       ),
                     ))
                 .toList(),
-            value: selectedValue,
+            // value: 'Susan',
             onChanged: (value) {
-              // setState(() {
-              //   selectedValue = value as String;
-              // });
+              context.read<HomeCubit>().pickValue(value.toString());
+              context.read<HomeCubit>().addInfo(items, value.toString());
             },
             icon: const Icon(Icons.arrow_drop_down),
             iconSize: 25,

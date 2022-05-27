@@ -16,7 +16,7 @@ class MyRoutes {
       case '/home':
         return pageReturner(const HomeView());
       case '/booking':
-        return pageReturner(BookingPage());
+        return pageReturner(BookingPage(contextbook: args as BuildContext,));
     }
   }
 

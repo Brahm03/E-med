@@ -35,7 +35,7 @@ class HomeView extends StatelessWidget {
               child: Text('Hospital Page'),
             );
           } else if (state is BookingState) {
-            return const BookingPage();
+            return BookingPage(contextbook: context,);
           } else {
             return Container();
           }
