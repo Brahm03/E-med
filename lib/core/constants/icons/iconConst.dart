@@ -15,5 +15,6 @@ class IconConst {
   static SvgPicture hospital = SvgPicture.asset('assets/icons/hospital.svg');
   static SvgPicture caseicon = SvgPicture.asset('assets/icons/caseicon.svg');
   static SvgPicture syringe = SvgPicture.asset('assets/icons/syring.svg');
+  static SvgPicture filter = SvgPicture.asset('assets/icons/filter.svg');
 
 }

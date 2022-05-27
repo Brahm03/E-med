@@ -22,6 +22,10 @@ class HospitalState extends HomeState {
   HospitalState();
 }
 
+class BookingState {
+  BookingState();
+}
+
 class NoMeditationState extends HomeState {
   String? text1;
   String? text2;

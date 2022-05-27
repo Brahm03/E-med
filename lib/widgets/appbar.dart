@@ -1,3 +1,4 @@
+import 'package:emed/core/constants/PM/pMconst.dart';
 import 'package:emed/core/constants/color/colorConst.dart';
 import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/extension/sizeExtension.dart';
@@ -17,25 +18,32 @@ class AppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: context.h * 0.07,
-      child: Column(children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            leading,
-            const Spacer(),
-            center,
-            const Spacer(),
-            SizedBox(
-              width: context.w * 0.1,
+      height: context.h * 0.06,
+      child: Padding(
+        padding: PMconst.extraSmall,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+          Align(
+            alignment: Alignment.center,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                leading,
+                const Spacer(),
+                center,
+                const Spacer(),
+                SizedBox(
+                  width: context.w * 0.1,
+                ),
+                trailing
+              ],
             ),
-            trailing
-          ],
-        ),
-        const Divider(
-          color: ColorConst.black,
-        )
-      ]),
+          ),
+          const Divider(
+            color: ColorConst.black,
+          )
+        ]),
+      ),
     );
   }
 }

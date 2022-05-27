@@ -2,8 +2,13 @@ import 'package:emed/core/constants/PM/pMconst.dart';
 import 'package:emed/core/constants/color/colorConst.dart';
 import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/core/constants/icons/iconConst.dart';
+import 'package:emed/core/constants/radius/radiusConst.dart';
+import 'package:emed/core/init/navigator/NavigationService.dart';
 import 'package:emed/extension/sizeExtension.dart';
+import 'package:emed/pages/home/view/pages/calendar/meeting.dart';
+import 'package:emed/pages/home/view/pages/calendar/meetingDateSource.dart';
 import 'package:emed/widgets/appbar.dart';
+import 'package:emed/widgets/calendarwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -22,12 +27,9 @@ class HomePage extends StatelessWidget {
               children: [
                 AppBarWidget(
                   trailing: IconConst.bell,
-                  leading: IconButton(
-                    onPressed: () {},
-                    icon: Icon(IconConst.person),
-                  ),
+                  leading: Icon(IconConst.person),
                   center: SizedBox(
-                      height: context.h * 0.050,
+                      height: context.h * 0.025,
                       width: context.w * 0.3,
                       child: IconConst.bluelogo),
                 ),
@@ -65,7 +67,7 @@ class HomePage extends StatelessWidget {
                       ),
                     )),
                 Expanded(
-                    flex: 6,
+                    flex: 8,
                     child: Padding(
                       padding: PMconst.medium,
                       child: Column(
@@ -75,17 +77,11 @@ class HomePage extends StatelessWidget {
                               'Monthly appointments',
                               style: FontStyles.headline5s,
                             ),
-                            SfCalendar(
-                              todayHighlightColor: ColorConst.red,
-                              showCurrentTimeIndicator: true,
-                              onViewChanged: ((viewChangedDetails) {
-                                debugPrint(viewChangedDetails.toString());
-                              }),
-                              monthViewSettings: const MonthViewSettings(
-                                  appointmentDisplayMode:
-                                      MonthAppointmentDisplayMode.appointment),
-                              view: CalendarView.month,
-                            ),
+                            CalenDarWidgets(
+                              onTap: (day) {
+                                NavigationService.instance.pushNamed('/booking');
+                              },
+                            )
                           ]),
                     ))
               ],

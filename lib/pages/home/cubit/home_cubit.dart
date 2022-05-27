@@ -6,6 +6,10 @@ class HomeCubit extends Cubit<HomeState> {
 
   int currentpage = 0;
 
+  changeState(HomeState state) {
+    emit(state);
+  }
+
   changePage(int index) {
     if (index == 0) {
       currentpage = index;
@@ -21,4 +25,9 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HospitalState());
     }
   }
+
+  pickMeeting(String value){
+    
+  }
+  
 }

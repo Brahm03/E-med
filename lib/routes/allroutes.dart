@@ -1,5 +1,6 @@
 import 'package:emed/pages/auth/view/auth_view.dart';
 import 'package:emed/pages/home/view/main/home_view.dart';
+import 'package:emed/pages/home/view/pages/booking/bookingpage.dart';
 import 'package:flutter/material.dart';
 
 class MyRoutes {
@@ -14,6 +15,8 @@ class MyRoutes {
         return pageReturner(const AuthView());
       case '/home':
         return pageReturner(const HomeView());
+      case '/booking':
+        return pageReturner(BookingPage());
     }
   }
 
