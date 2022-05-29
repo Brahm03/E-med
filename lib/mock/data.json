@@ -1,0 +1,56 @@
+[
+    {
+        "name" : "Mavlonov Boburjon",
+        "expert" : "Pediatric Pulmonolog",
+        "place work" : "Pediatric hospital N4",
+        "location" : "Shaykhontokhur District",
+        "time" : [10, 12],
+        "days" : "Monday, Thusday",
+        "rating" : 3
+    },
+    {
+        "name" : "Usmonov Dilshod",
+        "expert" : "Anesthesiology",
+        "place work" : "Family hospital N1",
+        "location" : "Mirzo Ulugbek District",
+        "time" : [1, 2],
+        "days" : "Friday",
+        "rating" : 5
+    },
+    {
+        "name" : "Akrom Burhoniddin",
+        "expert" : "Allergy, Immonulgy",
+        "place work" : "Johnson hospital N4",
+        "location" : "Olmazor District",
+        "time" : [9, 11],
+        "days" : "Wensday, Friday",
+        "rating" : 4
+    },
+    {
+        "name" : "Mavlonov Boburjon",
+        "expert" : "Pediatric Pulmonolog",
+        "place work" : "Pediatric hospital N4",
+        "location" : "Shaykhontokhur District",
+        "time" : [10, 12],
+        "days" : "Monday, Thusday",
+        "rating" : 3
+    },
+    {
+        "name" : "Imonoxunov Nuriddin",
+        "expert" : "Pediatric Pulmonolog",
+        "place work" : "Sergiili family hospital",
+        "location" : "Sergili District",
+        "time" : [4, 6],
+        "days" : "Monday, Thusday",
+        "rating" : 6
+    },
+    {
+        "name" : "Mamurov Abbos",
+        "expert" : "Endicrinology",
+        "place work" : "Endicrinology hospital Tashent N4",
+        "location" : "Mirzo Ulugbek District",
+        "time" : [6, 8],
+        "days" : "Friday, Saturday",
+        "rating" : 5
+    }
+]

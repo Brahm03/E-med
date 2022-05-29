@@ -16,8 +16,9 @@ class MyRoutes {
       case '/home':
         return pageReturner(const HomeView());
       case '/booking':
-        return pageReturner(BookingPage(contextbook: args as BuildContext,));
+        return pageReturner(const BookingPage());
     }
+    return null;
   }
 
   pageReturner(Widget page) => MaterialPageRoute(builder: (_) => page);

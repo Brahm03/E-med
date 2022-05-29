@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:emed/pages/home/state/home_state.dart';
+import 'package:emed/service/MockService.dart';
 import 'package:emed/service/getstorage.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(Homemain());
@@ -30,6 +32,13 @@ class HomeCubit extends Cubit<HomeState> {
     'Olmazor'
   ];
 
+  CalendarView calendarView = CalendarView.month;
+
+  changeTypeCalendat() {
+    calendarView = CalendarView.week;
+    emit(BookingState());
+  }
+
   List<String> time = ["9 : 00", "12 : 00", "4 : 00", "8 : 00"];
 
   String? selectedValue;
@@ -39,7 +48,7 @@ class HomeCubit extends Cubit<HomeState> {
       debugPrint(item.toString());
       await Storageservice.instance.storage.write('location', value);
       debugPrint('${Storageservice.instance.storage.read('location')}');
-      }
+    }
   }
 
   pickValue(String value) {

@@ -7,12 +7,18 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class CalenDarWidgets extends StatelessWidget {
   final void Function(CalendarTapDetails)? onTap;
-  const CalenDarWidgets({required this.onTap,Key? key}) : super(key: key);
+  const CalenDarWidgets({required this.onTap, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SfCalendar(
-    dataSource: MeetingDataSource(getDate(context: context,location: Storageservice.instance.storage.read('location'),day: Storageservice.instance.storage.read('day') as int,month: Storageservice.instance.storage.read('month'),houre: Storageservice.instance.storage.read('houre'),)),
+      dataSource: MeetingDataSource(getDate(
+        context: context,
+        location: Storageservice.instance.storage.read('location'),
+        day: Storageservice.instance.storage.read('day') as int,
+        month: Storageservice.instance.storage.read('month'),
+        houre: Storageservice.instance.storage.read('houre'),
+      )),
       firstDayOfWeek: 6,
       onTap: onTap,
       todayHighlightColor: ColorConst.red,

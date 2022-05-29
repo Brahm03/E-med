@@ -1,4 +1,3 @@
-import 'package:emed/core/components/boxdecoration/boxdecations.dart';
 import 'package:emed/core/constants/PM/pMconst.dart';
 import 'package:emed/core/constants/color/colorConst.dart';
 import 'package:emed/core/constants/font/fontStyles.dart';
@@ -7,18 +6,18 @@ import 'package:emed/core/init/navigator/NavigationService.dart';
 import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/pages/home/cubit/home_cubit.dart';
 import 'package:emed/pages/home/state/home_state.dart';
+import 'package:emed/service/MockService.dart';
 import 'package:emed/service/getstorage.dart';
 import 'package:emed/widgets/appbar.dart';
-import 'package:emed/widgets/buckbutton.dart';
 import 'package:emed/widgets/buttonWidgets.dart';
 import 'package:emed/widgets/dropdown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class BookingPage extends StatelessWidget {
-  final BuildContext contextbook;
-  const BookingPage({required this.contextbook,Key? key}) : super(key: key);
+  const BookingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +30,7 @@ class BookingPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: ButtonWidgets(
         child: const Text('Confirm'),
-        onPressed: () {
-          contextbook.read<HomeCubit>().changeState(Homemain());
-        },
+        onPressed: () {},
       ),
       body: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
@@ -50,7 +47,7 @@ class BookingPage extends StatelessWidget {
                     ),
                     leading: InkWell(
                         onTap: () => NavigationService.instance.pop,
-                        child: Text(
+                        child: const Text(
                           'cancel',
                           style: FontStyles.headline3sblue,
                         ))),
@@ -111,11 +108,20 @@ class BookingPage extends StatelessWidget {
                                 context: context,
                                 builder: (context) {
                                   return Container(
+                                    padding: PMconst.medium,
                                     margin: PMconst.medium,
                                     decoration: BoxDecoration(
                                         color: ColorConst.white,
                                         borderRadius: BorderRadius.circular(
                                             RadiuConst.medium)),
+                                    // child: SfCalendar(
+                                    //   view: CalendarView.week,
+                                    //   onTap: (v) {
+                                    //     context
+                                    //         .read<HomeCubit>()
+                                    //         .changeTypeCalendat();
+                                    //   },
+                                    // ),
                                     child: CupertinoDatePicker(
                                       onDateTimeChanged: (v) async {
                                         await Storageservice.instance.storage
