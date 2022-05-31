@@ -4,7 +4,6 @@ import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/core/constants/radius/radiusConst.dart';
 import 'package:emed/core/init/navigator/NavigationService.dart';
 import 'package:emed/extension/sizeExtension.dart';
-import 'package:emed/pages/home/cubit/home_cubit.dart';
 import 'package:emed/pages/home/state/home_state.dart';
 import 'package:emed/pages/home/view/pages/booking/cubit/booking_cubit.dart';
 import 'package:emed/service/getstorage.dart';
@@ -29,7 +28,9 @@ class BookingPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: ButtonWidgets(
         child: const Text('Confirm'),
-        onPressed: () {},
+        onPressed: () async {
+          // await context.read<BookingCubit>().addInfo(context.watch<BookingCubit>().appointments);
+        },
       ),
       body: BlocBuilder<BookingCubit, BookingState>(
         builder: (context, state) {
@@ -99,7 +100,7 @@ class BookingPage extends StatelessWidget {
                             height: context.h * 0.1,
                             child: DropdownWidgets(
                                 text: 'Choose doctor’s service type...',
-                                items: [])),
+                                items: const [])),
                         const Text('Enter the time',
                             style: FontStyles.headline4sbold),
                         InkWell(

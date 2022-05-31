@@ -3,6 +3,7 @@ import 'package:emed/core/constants/PM/pMconst.dart';
 import 'package:emed/core/constants/color/colorConst.dart';
 import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/pages/home/cubit/home_cubit.dart';
+import 'package:emed/pages/home/view/pages/booking/cubit/booking_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,8 +54,8 @@ class DropdownWidgets extends StatelessWidget {
                 .toList(),
             // value: 'Susan',
             onChanged: (value) {
-              // context.read<HomeCubit>().pickValue(value.toString());
-              context.read<HomeCubit>().addInfo(items, value.toString());
+              debugPrint(items.toString());
+              context.read<BookingCubit>().collectInfo(value, items);
             },
             icon: const Icon(Icons.arrow_drop_down),
             iconSize: 25,

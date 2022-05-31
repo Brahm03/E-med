@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:emed/pages/home/state/home_state.dart';
+import 'package:emed/service/Boxservice.dart';
 import 'package:emed/service/getstorage.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
@@ -56,14 +57,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   String? selectedValue;
 
-  addInfo(List item, String value) async {
-    if (item[0] == 'Tashkent') {
-      debugPrint(item.toString());
-      await Storageservice.instance.storage.write('location', value);
-      debugPrint('${Storageservice.instance.storage.read('location')}');
-    }
-  }
-
   // pickValue(String value) {
   //   selectedValue = value;
   //   emit(BookingState());
@@ -90,6 +83,8 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HospitalState());
     }
   }
+
+  
 
   pickMeeting(String value) {}
 }

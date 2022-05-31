@@ -52,9 +52,15 @@ class DoctorPage extends StatelessWidget {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: datainfo[0].length - 1,
                             itemBuilder: (context, index) {
-                              return DoctorsWidget(
-                                  pic: datainfo[0][index]['pic'],
-                                  name: datainfo[0][index]['name'].toString());
+                              return InkWell(
+                                onTap: () =>  NavigationService.instance.pushNamed(
+                                    '/doctorinfo',
+                                    args: datainfo[0][index]
+                                  ),
+                                child: DoctorsWidget(
+                                    pic: datainfo[0][index]['pic'],
+                                    name: datainfo[0][index]['name'].toString()),
+                              );
                             }),
                       ),
                       SizedBox(
