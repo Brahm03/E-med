@@ -15,14 +15,15 @@ class SyringeState extends HomeState {
 }
 
 class DoctorState extends HomeState {
-  DoctorState();
+  List data = [];
+  DoctorState(this.data);
 }
 
 class HospitalState extends HomeState {
   HospitalState();
 }
 
-class BookingState extends HomeState{
+class BookingState extends HomeState {
   BookingState();
 }
 

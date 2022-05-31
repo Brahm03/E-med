@@ -3,7 +3,7 @@ import 'package:emed/pages/home/cubit/home_cubit.dart';
 import 'package:emed/pages/home/state/home_state.dart';
 import 'package:emed/pages/home/view/pages/booking/bookingpage.dart';
 import 'package:emed/pages/home/view/pages/calendar/home_page.dart';
-import 'package:emed/pages/home/view/pages/doctor/doctor_page.dart';
+import 'package:emed/pages/home/view/pages/doctor/pages/view/doctor_page.dart';
 import 'package:emed/widgets/navigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +14,11 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(),
+      create: (context) {
+        var cubit = HomeCubit();
+        cubit.getData();
+        return cubit;
+      },
       child: homeScaffold(),
     );
   }
@@ -29,13 +33,13 @@ class HomeView extends StatelessWidget {
               child: Text('Syringe Page'),
             );
           } else if (state is DoctorState) {
-            return const DoctorPage();
+            return DoctorPage(datainfo: state.data,);
           } else if (state is HospitalState) {
             return const Center(
               child: Text('Hospital Page'),
             );
           } else if (state is BookingState) {
-            return BookingPage();
+            return const BookingPage();
           } else {
             return Container();
           }

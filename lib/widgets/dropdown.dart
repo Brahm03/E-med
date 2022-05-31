@@ -53,7 +53,7 @@ class DropdownWidgets extends StatelessWidget {
                 .toList(),
             // value: 'Susan',
             onChanged: (value) {
-              context.read<HomeCubit>().pickValue(value.toString());
+              // context.read<HomeCubit>().pickValue(value.toString());
               context.read<HomeCubit>().addInfo(items, value.toString());
             },
             icon: const Icon(Icons.arrow_drop_down),

@@ -15,7 +15,7 @@ class CalenDarWidgets extends StatelessWidget {
       dataSource: MeetingDataSource(getDate(
         context: context,
         location: Storageservice.instance.storage.read('location'),
-        day: Storageservice.instance.storage.read('day') as int,
+        day: Storageservice.instance.storage.read('day'),
         month: Storageservice.instance.storage.read('month'),
         houre: Storageservice.instance.storage.read('houre'),
       )),

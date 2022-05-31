@@ -5,8 +5,8 @@ class NavigationService {
   static NavigationService get instance => _instance;
   NavigationService.init();
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-  Future<dynamic> pushNamed(String routeName) {
-    return navigatorKey.currentState!.pushNamed(routeName);
+  Future<dynamic> pushNamed(String routeName, {var args = const []}) {
+    return navigatorKey.currentState!.pushNamed(routeName, arguments: args);
   }
 
   Future<dynamic> pushNamedAndRemoveUntil(String routeName) {

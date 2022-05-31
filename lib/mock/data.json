@@ -1,55 +1,68 @@
 [
     {
         "name" : "Mavlonov Boburjon",
+        "pic" : "assets/images/person1.png",
         "expert" : "Pediatric Pulmonolog",
         "place work" : "Pediatric hospital N4",
         "location" : "Shaykhontokhur District",
         "time" : [10, 12],
+        "region" : "Tashkent",
         "days" : "Monday, Thusday",
         "rating" : 3
     },
     {
         "name" : "Usmonov Dilshod",
+        "pic" : "assets/images/person2.png",
+
         "expert" : "Anesthesiology",
         "place work" : "Family hospital N1",
         "location" : "Mirzo Ulugbek District",
         "time" : [1, 2],
+        "region" : "Xorazm",
         "days" : "Friday",
         "rating" : 5
     },
     {
         "name" : "Akrom Burhoniddin",
+        "pic" : "assets/images/person3.png",
         "expert" : "Allergy, Immonulgy",
         "place work" : "Johnson hospital N4",
         "location" : "Olmazor District",
         "time" : [9, 11],
+        "region" : "Qashqadarya",
         "days" : "Wensday, Friday",
         "rating" : 4
     },
     {
         "name" : "Mavlonov Boburjon",
+        "pic" : "assets/images/person4.png",
         "expert" : "Pediatric Pulmonolog",
         "place work" : "Pediatric hospital N4",
         "location" : "Shaykhontokhur District",
         "time" : [10, 12],
+        "region" : "Samarqand",
         "days" : "Monday, Thusday",
         "rating" : 3
     },
     {
         "name" : "Imonoxunov Nuriddin",
+        "pic" : "assets/images/person5.png",
         "expert" : "Pediatric Pulmonolog",
         "place work" : "Sergiili family hospital",
         "location" : "Sergili District",
         "time" : [4, 6],
+        "region" : "Bukhara",
         "days" : "Monday, Thusday",
         "rating" : 6
     },
     {
         "name" : "Mamurov Abbos",
+        "pic" : "assets/images/person4.png",
         "expert" : "Endicrinology",
         "place work" : "Endicrinology hospital Tashent N4",
         "location" : "Mirzo Ulugbek District",
         "time" : [6, 8],
+        "region" : "Andijan",
         "days" : "Friday, Saturday",
         "rating" : 5
     }

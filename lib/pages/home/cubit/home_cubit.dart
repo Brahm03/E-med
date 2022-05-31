@@ -1,12 +1,16 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:emed/pages/home/state/home_state.dart';
-import 'package:emed/service/MockService.dart';
 import 'package:emed/service/getstorage.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:flutter/services.dart' as bundle;
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(Homemain());
+
+  static List datainfo = [];
 
   List<String> regions = [
     'Tashkent',
@@ -32,12 +36,21 @@ class HomeCubit extends Cubit<HomeState> {
     'Olmazor'
   ];
 
+  Future<List> getData() async {
+    final data = await bundle.rootBundle.loadString('lib/mock/data.json');
+    final list = jsonDecode(data) as List;
+    debugPrint(list.toString());
+    datainfo.add(list);
+    DoctorState(list);
+    return list;
+  }
+
   CalendarView calendarView = CalendarView.month;
 
-  changeTypeCalendat() {
-    calendarView = CalendarView.week;
-    emit(BookingState());
-  }
+  // changeTypeCalendat() {
+  //   calendarView = CalendarView.week;
+  //   emit(BookingState());
+  // }
 
   List<String> time = ["9 : 00", "12 : 00", "4 : 00", "8 : 00"];
 
@@ -51,10 +64,10 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  pickValue(String value) {
-    selectedValue = value;
-    emit(BookingState());
-  }
+  // pickValue(String value) {
+  //   selectedValue = value;
+  //   emit(BookingState());
+  // }
 
   int currentpage = 0;
 
@@ -71,7 +84,7 @@ class HomeCubit extends Cubit<HomeState> {
       emit(SyringeState());
     } else if (index == 2) {
       currentpage = index;
-      emit(DoctorState());
+      emit(DoctorState(datainfo));
     } else if (index == 3) {
       currentpage = index;
       emit(HospitalState());

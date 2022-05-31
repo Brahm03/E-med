@@ -6,7 +6,7 @@ import 'package:emed/core/init/navigator/NavigationService.dart';
 import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/pages/home/cubit/home_cubit.dart';
 import 'package:emed/pages/home/state/home_state.dart';
-import 'package:emed/service/MockService.dart';
+import 'package:emed/pages/home/view/pages/booking/cubit/booking_cubit.dart';
 import 'package:emed/service/getstorage.dart';
 import 'package:emed/widgets/appbar.dart';
 import 'package:emed/widgets/buttonWidgets.dart';
@@ -14,7 +14,6 @@ import 'package:emed/widgets/dropdown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class BookingPage extends StatelessWidget {
   const BookingPage({Key? key}) : super(key: key);
@@ -22,18 +21,19 @@ class BookingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => HomeCubit(), child: scafold(context));
+        create: (context) => BookingCubit(), child: myscafold(context));
   }
 
-  Scaffold scafold(BuildContext context) {
+  Scaffold myscafold(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: ButtonWidgets(
         child: const Text('Confirm'),
         onPressed: () {},
       ),
-      body: BlocBuilder<HomeCubit, HomeState>(
+      body: BlocBuilder<BookingCubit, BookingState>(
         builder: (context, state) {
+          var data = context.watch<BookingCubit>();
           return SafeArea(
             child: Column(
               children: [
@@ -46,7 +46,8 @@ class BookingPage extends StatelessWidget {
                       style: FontStyles.headline3s,
                     ),
                     leading: InkWell(
-                        onTap: () => NavigationService.instance.pop,
+                        onTap: () => NavigationService.instance
+                            .pushNamedAndRemoveUntil('/home'),
                         child: const Text(
                           'cancel',
                           style: FontStyles.headline3sblue,
@@ -63,35 +64,35 @@ class BookingPage extends StatelessWidget {
                             height: context.h * 0.1,
                             child: DropdownWidgets(
                                 text: 'Choose hospital region...',
-                                items: context.watch<HomeCubit>().regions)),
+                                items: data.regions)),
                         const Text('District',
                             style: FontStyles.headline4sbold),
                         SizedBox(
                             height: context.h * 0.1,
                             child: DropdownWidgets(
                                 text: 'Choose hospital district...',
-                                items: context.read<HomeCubit>().district)),
+                                items: data.district)),
                         const Text('Hospital',
                             style: FontStyles.headline4sbold),
                         SizedBox(
                             height: context.h * 0.1,
                             child: DropdownWidgets(
                                 text: 'Choose doctor’s workplace...',
-                                items: [])),
+                                items: data.hospital)),
                         const Text('Doctor’s position',
                             style: FontStyles.headline4sbold),
                         SizedBox(
                             height: context.h * 0.1,
                             child: DropdownWidgets(
                                 text: 'Choose doctor’s position...',
-                                items: [])),
+                                items: data.doctorposition)),
                         const Text('The doctor',
                             style: FontStyles.headline4sbold),
                         SizedBox(
                             height: context.h * 0.1,
                             child: DropdownWidgets(
                                 text: 'Choose the doctor you want...',
-                                items: [])),
+                                items: data.doctorname)),
                         const Text('Service type',
                             style: FontStyles.headline4sbold),
                         SizedBox(
@@ -114,14 +115,6 @@ class BookingPage extends StatelessWidget {
                                         color: ColorConst.white,
                                         borderRadius: BorderRadius.circular(
                                             RadiuConst.medium)),
-                                    // child: SfCalendar(
-                                    //   view: CalendarView.week,
-                                    //   onTap: (v) {
-                                    //     context
-                                    //         .read<HomeCubit>()
-                                    //         .changeTypeCalendat();
-                                    //   },
-                                    // ),
                                     child: CupertinoDatePicker(
                                       onDateTimeChanged: (v) async {
                                         await Storageservice.instance.storage
@@ -130,7 +123,6 @@ class BookingPage extends StatelessWidget {
                                             .write('houre', v.hour);
                                         await Storageservice.instance.storage
                                             .write('month', v.month);
-
                                         debugPrint(Storageservice
                                             .instance.storage
                                             .read('month')
@@ -145,7 +137,7 @@ class BookingPage extends StatelessWidget {
                               height: context.h * 0.1,
                               child: DropdownWidgets(
                                   text: 'DD.MM.YYYY / HH:MM - HH:MM',
-                                  items: [])),
+                                  items: const [])),
                         ),
                         SizedBox(height: context.h * 0.1),
                       ],
