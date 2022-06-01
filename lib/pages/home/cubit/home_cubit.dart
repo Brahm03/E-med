@@ -1,9 +1,6 @@
 import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
 import 'package:emed/pages/home/state/home_state.dart';
-import 'package:emed/service/Boxservice.dart';
-import 'package:emed/service/getstorage.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:flutter/services.dart' as bundle;
@@ -28,7 +25,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   String? selectedValue;
 
-
   int currentpage = 0;
 
   changeState(HomeState state) {
@@ -50,8 +46,6 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HospitalState());
     }
   }
-
-  
 
   pickMeeting(String value) {}
 }

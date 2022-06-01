@@ -2,7 +2,6 @@ import 'package:emed/core/constants/PM/pMconst.dart';
 import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/core/init/navigator/NavigationService.dart';
 import 'package:emed/extension/sizeExtension.dart';
-import 'package:emed/pages/home/view/pages/treatment/view/listtilewidgets/list_tile_widget.dart';
 import 'package:emed/widgets/appbar.dart';
 import 'package:emed/widgets/buckbutton.dart';
 import 'package:emed/widgets/buttonWidgets.dart';
@@ -34,15 +33,15 @@ class DoctorBookPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Appointment to:', style: FontStyles.headline4s,),
+                  const Text('Appointment to:', style: FontStyles.headline4s,),
                   SizedBox(height: context.h * 0.02),
                   DoctorsWidget(pic: info['pic'], name: '${info['name']} at', expert: info['expert'], hospital: info['place work'],),
                   SizedBox(height: context.h * 0.07,),
-                  Text('Service type', style: FontStyles.headline4s,),
-                  SizedBox(height: context.h * 0.1,child: DropdownWidgets(items: [],text: 'Choose doctor\'s service type...',)),
+                  const Text('Service type', style: FontStyles.headline4s,),
+                  SizedBox(height: context.h * 0.1,child: DropdownWidgets(items: const [],text: 'Choose doctor\'s service type...',)),
                   SizedBox(height: context.h * 0.04,),
-                  Text('Enter time', style: FontStyles.headline4s,),
-                  SizedBox(height: context.h * 0.1,child: DropdownWidgets(items: [],text: 'DD.MM.YYYY / HH:MM - HH:MM',))
+                  const Text('Enter time', style: FontStyles.headline4s,),
+                  SizedBox(height: context.h * 0.1,child: DropdownWidgets(items: const [],text: 'DD.MM.YYYY / HH:MM - HH:MM',))
                 ],
               ),
             )

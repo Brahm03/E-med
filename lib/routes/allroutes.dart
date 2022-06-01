@@ -23,9 +23,13 @@ class MyRoutes {
       case '/filter':
         return pageReturner(const FilterView());
       case '/doctorinfo':
-        return pageReturner(DoctorInfo(info: args as Map,));
+        return pageReturner(DoctorInfo(
+          info: args as Map,
+        ));
       case '/doctorbook':
-        return pageReturner(DoctorBookPage(info: args as Map,));     
+        return pageReturner(DoctorBookPage(
+          info: args as Map,
+        ));
     }
     return null;
   }

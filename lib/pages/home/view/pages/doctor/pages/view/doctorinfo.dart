@@ -4,7 +4,6 @@ import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/core/constants/icons/iconConst.dart';
 import 'package:emed/core/init/navigator/NavigationService.dart';
 import 'package:emed/extension/sizeExtension.dart';
-import 'package:emed/pages/home/cubit/home_cubit.dart';
 import 'package:emed/widgets/appbar.dart';
 import 'package:emed/widgets/buckbutton.dart';
 import 'package:emed/widgets/buttonWidgets.dart';
@@ -23,7 +22,8 @@ class DoctorInfo extends StatelessWidget {
             'Book an appointment',
             style: FontStyles.headline3s,
           ),
-          onPressed: () => NavigationService.instance.pushNamed('/doctorbook', args: info)),
+          onPressed: () =>
+              NavigationService.instance.pushNamed('/doctorbook', args: info)),
       body: SafeArea(
         child: SingleChildScrollView(
           child: SizedBox(
@@ -107,11 +107,19 @@ class DoctorInfo extends StatelessWidget {
                             ),
                             SizedBox(
                               height: context.h * 0.1,
-                                child: ListView.builder(scrollDirection: Axis.horizontal,itemCount: info['rating'],itemBuilder: (_, __) {
-                                return Icon(IconConst.stari, color: ColorConst.kPrimaryColor,);
-                              }),
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: info['rating'],
+                                  itemBuilder: (_, __) {
+                                    return Icon(
+                                      IconConst.stari,
+                                      color: ColorConst.kPrimaryColor,
+                                    );
+                                  }),
                             ),
-                            SizedBox(height: context.h * 0.1,)
+                            SizedBox(
+                              height: context.h * 0.1,
+                            )
                           ],
                         ),
                       )
