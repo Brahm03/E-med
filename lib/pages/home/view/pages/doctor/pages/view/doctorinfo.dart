@@ -30,6 +30,9 @@ class DoctorInfo extends StatelessWidget {
             child: Column(
               children: [
                 AppBarWidget(
+                  trailing: SizedBox(
+                    width: context.w * 0.15,
+                  ),
                   leading: BackButtonWidgets(
                       ontap: () => NavigationService.instance.pop),
                   center: Text(
@@ -105,18 +108,28 @@ class DoctorInfo extends StatelessWidget {
                               'Rating',
                               style: FontStyles.headline4s,
                             ),
-                            SizedBox(
-                              height: context.h * 0.1,
-                              child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: info['rating'],
-                                  itemBuilder: (_, __) {
-                                    return Icon(
-                                      IconConst.stari,
-                                      color: ColorConst.kPrimaryColor,
-                                    );
-                                  }),
-                            ),
+                            Row(children: [
+                              SizedBox(
+                                width: context.w * info['rating'] * 0.08425,
+                                height: context.h * 0.1,
+                                child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: info['rating'],
+                                    itemBuilder: (_, __) {
+                                      return Padding(padding: EdgeInsets.only(right: context.w * 0.037),child: IconConst.star);
+                                    }),
+                              ),
+                              SizedBox(
+                                width: context.w * (5 - (info['rating'] as int)) * 0.08425,
+                                height: context.h * 0.1,
+                                child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: 5 - (info['rating'] as int),
+                                    itemBuilder: (_, __) {
+                                      return Padding(padding: EdgeInsets.only(right: context.w * 0.037),child: IconConst.stargrey);
+                                    }),
+                              ),
+                            ]),
                             SizedBox(
                               height: context.h * 0.1,
                             )

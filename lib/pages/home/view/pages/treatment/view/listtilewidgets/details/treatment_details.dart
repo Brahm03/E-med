@@ -18,6 +18,7 @@ class TreatmentDetailsView extends StatelessWidget {
         child: Column(
           children: [
             AppBarWidget(
+                trailing: SizedBox(width: context.h * 0.06),
                 center: const Text(
                   "Treatment details",
                   style: FontStyles.headline3s,

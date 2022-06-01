@@ -32,9 +32,6 @@ class AppBarWidget extends StatelessWidget {
                 const Spacer(),
                 center,
                 const Spacer(),
-                SizedBox(
-                  width: context.w * 0.1,
-                ),
                 trailing
               ],
             ),

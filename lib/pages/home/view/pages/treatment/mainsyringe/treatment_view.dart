@@ -31,9 +31,9 @@ class _TreatmentViewState extends State<TreatmentView> with TickerProviderStateM
               trailing: IconConst.bell,
               leading: const Icon(Icons.person),
               center: SizedBox(
-                  height: context.h * 0.025,
-                  width: context.w * 0.3,
-                  child: IconConst.logo),
+                      height: context.h * 0.025,
+                      width: context.w * 0.3,
+                      child: IconConst.bluelogo),
             ),
             SizedBox(
               height: context.h * 0.05,
