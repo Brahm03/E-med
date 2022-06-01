@@ -8,7 +8,9 @@ import '../core/constants/color/colorConst.dart';
 class DoctorsWidget extends StatelessWidget {
   final String name;
   final String pic;
-  const DoctorsWidget({required this.pic, required this.name, Key? key})
+  final String expert;
+  final String hospital;
+  const DoctorsWidget({this.hospital = '',this.expert = '',required this.pic, required this.name, Key? key})
       : super(key: key);
 
   @override
@@ -17,6 +19,7 @@ class DoctorsWidget extends StatelessWidget {
         padding: EdgeInsets.only(bottom: context.h * 0.020),
         child: Column(children: [
           ListTile(
+            subtitle: Text('$expert  \n$hospital', style: FontStyles.headline4s,),
             trailing: Icon(IconConst.arrow),
             leading: ClipRRect(
               borderRadius: BorderRadius.circular(RadiuConst.extraLarge),

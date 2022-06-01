@@ -15,7 +15,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SignInView extends StatelessWidget {
   SignInView({Key? key}) : super(key: key);
 
-  // all formfields will be come from cubit
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -40,7 +39,7 @@ class SignInView extends StatelessWidget {
               alignment: Alignment.center,
               child: AppBarWidget(
                   leading: BackButtonWidgets(ontap: () => context.read<AuthCubit>().changeState(AuthInitial())),
-                  center: Text("Log In", style: FontStyles.headline3s,)),
+                  center: const Text("Log In", style: FontStyles.headline3s,)),
             ),
             Expanded(
               child: SingleChildScrollView(

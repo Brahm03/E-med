@@ -3,6 +3,7 @@ import 'package:emed/pages/home/state/home_state.dart';
 import 'package:emed/pages/home/view/pages/booking/bookingpage.dart';
 import 'package:emed/pages/home/view/pages/calendar/home_page.dart';
 import 'package:emed/pages/home/view/pages/doctor/pages/view/doctor_page.dart';
+import 'package:emed/pages/home/view/pages/treatment/mainsyringe/treatment_view.dart';
 import 'package:emed/widgets/navigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,11 +29,11 @@ class HomeView extends StatelessWidget {
           if (state is Homemain) {
             return const HomePage();
           } else if (state is SyringeState) {
-            return const Center(
-              child: Text('Syringe Page'),
-            );
+            return const TreatmentView();
           } else if (state is DoctorState) {
-            return DoctorPage(datainfo: state.data,);
+            return DoctorPage(
+              datainfo: state.data,
+            );
           } else if (state is HospitalState) {
             return const Center(
               child: Text('Hospital Page'),

@@ -13,30 +13,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   static List datainfo = [];
 
-  List<String> regions = [
-    'Tashkent',
-    'Namangan',
-    'Andijan',
-    'Fargana',
-    'Xorazm',
-    'Samarqand',
-    'Buxoro',
-    'Navoiy',
-    'Jizzax',
-    'Qashqadaryo',
-    'Surxandaryo',
-    'Qora qalpogiston'
-  ];
-
-  List<String> district = [
-    'Chilonzor',
-    'Mirzo Ulugbek',
-    'Sergili',
-    'Yakka Saroy',
-    'Shayxontohur',
-    'Olmazor'
-  ];
-
   Future<List> getData() async {
     final data = await bundle.rootBundle.loadString('lib/mock/data.json');
     final list = jsonDecode(data) as List;
@@ -48,19 +24,10 @@ class HomeCubit extends Cubit<HomeState> {
 
   CalendarView calendarView = CalendarView.month;
 
-  // changeTypeCalendat() {
-  //   calendarView = CalendarView.week;
-  //   emit(BookingState());
-  // }
-
   List<String> time = ["9 : 00", "12 : 00", "4 : 00", "8 : 00"];
 
   String? selectedValue;
 
-  // pickValue(String value) {
-  //   selectedValue = value;
-  //   emit(BookingState());
-  // }
 
   int currentpage = 0;
 

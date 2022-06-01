@@ -1,6 +1,7 @@
 import 'package:emed/pages/auth/view/auth_view.dart';
 import 'package:emed/pages/home/view/main/home_view.dart';
 import 'package:emed/pages/home/view/pages/booking/bookingpage.dart';
+import 'package:emed/pages/home/view/pages/doctor/pages/view/doctorBook.dart';
 import 'package:emed/pages/home/view/pages/doctor/pages/view/doctorinfo.dart';
 import 'package:emed/pages/home/view/pages/doctor/pages/view/filterview.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,9 @@ class MyRoutes {
       case '/filter':
         return pageReturner(const FilterView());
       case '/doctorinfo':
-        return pageReturner(DoctorInfo(info: args as Map,));   
+        return pageReturner(DoctorInfo(info: args as Map,));
+      case '/doctorbook':
+        return pageReturner(DoctorBookPage(info: args as Map,));     
     }
     return null;
   }

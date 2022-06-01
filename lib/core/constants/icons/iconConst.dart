@@ -16,5 +16,7 @@ class IconConst {
   static SvgPicture caseicon = SvgPicture.asset('assets/icons/caseicon.svg');
   static SvgPicture syringe = SvgPicture.asset('assets/icons/syring.svg');
   static SvgPicture filter = SvgPicture.asset('assets/icons/filter.svg');
+  static SvgPicture star = SvgPicture.asset('assets/icons/star.svg');
   static IconData arrow = CupertinoIcons.right_chevron;
+  static IconData stari = CupertinoIcons.star;
 }
