@@ -19,4 +19,5 @@ class IconConst {
   static SvgPicture star = SvgPicture.asset('assets/icons/iconstar.svg');
   static SvgPicture stargrey = SvgPicture.asset('assets/icons/stargrey.svg');
   static IconData arrow = CupertinoIcons.right_chevron;
+  
 }

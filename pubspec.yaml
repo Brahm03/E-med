@@ -73,6 +73,7 @@ flutter:
     - assets/font/
     - assets/icons/
     - assets/images/
+    - assets/images/hospitals/
     - lib/mock/
 
   

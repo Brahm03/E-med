@@ -3,6 +3,10 @@ import 'package:emed/pages/home/state/home_state.dart';
 import 'package:emed/pages/home/view/pages/booking/bookingpage.dart';
 import 'package:emed/pages/home/view/pages/calendar/home_page.dart';
 import 'package:emed/pages/home/view/pages/doctor/pages/view/doctor_page.dart';
+import 'package:emed/pages/home/view/pages/doctor/pages/view/filterview.dart';
+import 'package:emed/pages/home/view/pages/hospital/doctor_info_view.dart';
+import 'package:emed/pages/home/view/pages/hospital/hospital_info_page.dart';
+import 'package:emed/pages/home/view/pages/hospital/hospital_search.dart';
 import 'package:emed/pages/home/view/pages/treatment/mainsyringe/treatment_view.dart';
 import 'package:emed/widgets/navigationbar.dart';
 import 'package:flutter/material.dart';
@@ -35,9 +39,13 @@ class HomeView extends StatelessWidget {
               datainfo: state.data,
             );
           } else if (state is HospitalState) {
-            return const Center(
-              child: Text('Hospital Page'),
-            );
+            return HospitalSearchView();
+          } else if (state is HospitalInfoState) {
+            return HospitalInfoView(info: state.hinfo);
+          } else if (state is DoctorsInfoState) {
+            return DoctorInfoView(info: state.hinfo);
+          } else if (state is FilterStateHospital) {
+            return const FilterView();
           } else if (state is BookingState) {
             return const BookingPage();
           } else {
