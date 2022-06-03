@@ -40,7 +40,6 @@ class _TreatmentViewState extends State<TreatmentView> with TickerProviderStateM
               child: tabBar()),
             Expanded(
               child: SizedBox(
-                
                 child: TabBarView(
                   controller: _controller,
                   children: const [

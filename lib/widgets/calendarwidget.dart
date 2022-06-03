@@ -2,6 +2,7 @@ import 'package:emed/core/constants/color/colorConst.dart';
 import 'package:emed/pages/home/view/pages/calendar/meeting.dart';
 import 'package:emed/pages/home/view/pages/calendar/meetingDateSource.dart';
 import 'package:emed/service/getstorage.dart';
+// ignore: implementation_imports
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -14,10 +15,10 @@ class CalenDarWidgets extends StatelessWidget {
     return SfCalendar(
       dataSource: MeetingDataSource(getDate(
         context: context,
-        location: Storageservice.instance.storage.read('location'),
-        day: Storageservice.instance.storage.read('day'),
-        month: Storageservice.instance.storage.read('month'),
-        houre: Storageservice.instance.storage.read('houre'),
+        location: Storageservice.instance.storage.read('location') ?? 'Tashkent',
+        day: Storageservice.instance.storage.read('day') ?? 23,
+        month: Storageservice.instance.storage.read('month') ?? 5,
+        houre: Storageservice.instance.storage.read('houre') ?? 6,
       )),
       firstDayOfWeek: 6,
       onTap: onTap,

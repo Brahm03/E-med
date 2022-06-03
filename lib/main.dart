@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'E-Med',
       theme: AppTheme.apptheme,
-      initialRoute: '/home',
+      initialRoute: '/auth',
       onGenerateRoute: (settings) =>
           MyRoutes.instance.ongenerateRoute(settings),
     );

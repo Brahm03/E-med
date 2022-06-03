@@ -27,6 +27,7 @@ class ConFirmationView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppBarWidget(
+              trailing: SizedBox(width: context.w * 0.15),
               leading: BackButtonWidgets(
                 ontap: () => context.read<AuthCubit>().changeState(AuthSignUP()),
               ),

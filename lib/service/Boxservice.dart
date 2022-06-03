@@ -20,5 +20,6 @@ class BoxService {
   Future addInfoToBox(Map<dynamic, dynamic> info) async {
     await inputInfoBox.add(info);
     debugPrint(inputInfoBox.toString());
+    debugPrint(inputInfoBox.getAt(1).toString());
   }
 }

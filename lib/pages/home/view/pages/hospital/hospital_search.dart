@@ -1,9 +1,11 @@
+import 'package:emed/core/constants/PM/pMconst.dart';
 import 'package:emed/core/constants/icons/iconConst.dart';
 import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/pages/home/cubit/home_cubit.dart';
 import 'package:emed/pages/home/state/home_state.dart';
 import 'package:emed/widgets/appbar.dart';
 import 'package:emed/widgets/text_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -34,19 +36,9 @@ class HospitalSearchView extends StatelessWidget {
                     width: context.w * 0.3,
                     child: IconConst.bluelogo),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 18, bottom: 10),
-                child: SizedBox(
-                  height: 36,
-                  child: TextFormField(
-                    decoration: inputDecarartion(),
-                    onChanged: (text) {
-                      context.read<HomeCubit>().searching(text);
-                    },
-                  ),
-                ),
-              ),
+              Padding(padding: PMconst.medium, child: CupertinoSearchTextField(onChanged: (text){
+                context.read<HomeCubit>().searching(text);
+              }),),
               Padding(
                 padding: EdgeInsets.only(
                     left: context.w * 0.05,
@@ -210,13 +202,6 @@ class HospitalSearchView extends StatelessWidget {
     );
   }
 
-  InputDecoration inputDecarartion() {
-    return const InputDecoration(
-      hintText: "Search hospital",
-      hintStyle: TextStyle(
-        color: Colors.grey,
-      ),
-      suffixIcon: Icon(Icons.search),
-    );
-  }
+
+ 
 }

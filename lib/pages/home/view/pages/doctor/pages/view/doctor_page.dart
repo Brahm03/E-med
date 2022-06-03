@@ -7,6 +7,7 @@ import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/pages/home/state/home_state.dart';
 import 'package:emed/pages/home/view/pages/doctor/cubit/doctor_cubit.dart';
 import 'package:emed/widgets/appbar.dart';
+import 'package:emed/widgets/doctorWidgetSmall.dart';
 import 'package:emed/widgets/doctorsWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -75,13 +76,10 @@ class DoctorPage extends StatelessWidget {
                                                 .instance
                                                 .pushNamed('/doctorinfo',
                                                     args: datainfo[0][index]),
-                                            child: SizedBox(
-                                              height: context.h * 0.130,
-                                              child: DoctorsWidget(
-                                                  pic: datainfo[0][index]['pic'],
-                                                  name: datainfo[0][index]['name']
-                                                      .toString()),
-                                            ),
+                                            child: DoctorWidgetSmall(
+                                                pic: datainfo[0][index]['pic'],
+                                                name: datainfo[0][index]['name']
+                                                    .toString()),
                                           );
                                         }),
                                   ),
@@ -108,7 +106,7 @@ class DoctorPage extends StatelessWidget {
                                                   .pushNamed('/doctorinfo',
                                                       args: datainfo[0][index]);
                                             },
-                                            child: DoctorsWidget(
+                                            child: DoctorWidgetSmall(
                                                 pic: datainfo[0][index]['pic'],
                                                 name: datainfo[0][index]['name']
                                                     .toString()),
@@ -136,7 +134,7 @@ class DoctorPage extends StatelessWidget {
                                                 .temp
                                                 .toList()[index]);
                                         },
-                                        child: DoctorsWidget(
+                                        child: DoctorWidgetSmall(
                                             pic: context
                                                 .watch<DoctorCubit>()
                                                 .temp

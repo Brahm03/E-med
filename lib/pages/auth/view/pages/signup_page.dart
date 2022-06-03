@@ -1,5 +1,4 @@
 import 'package:emed/core/components/allvalidators.dart';
-import 'package:emed/core/constants/color/colorConst.dart';
 import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/core/constants/icons/iconConst.dart';
 import 'package:emed/core/constants/radius/radiusConst.dart';
@@ -41,6 +40,7 @@ class SignUpView extends StatelessWidget {
             Container(
               alignment: Alignment.center,
               child: AppBarWidget(
+                trailing: SizedBox(width: context.w * 0.15),
                 leading: BackButtonWidgets(ontap: () => context.read<AuthCubit>().changeState(AuthInitial())),
               ),
             ),

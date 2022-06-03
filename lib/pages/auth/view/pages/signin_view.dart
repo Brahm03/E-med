@@ -38,6 +38,7 @@ class SignInView extends StatelessWidget {
             Container(
               alignment: Alignment.center,
               child: AppBarWidget(
+                  trailing: SizedBox(width: context.w * 0.15),
                   leading: BackButtonWidgets(ontap: () => context.read<AuthCubit>().changeState(AuthInitial())),
                   center: const Text("Log In", style: FontStyles.headline3s,)),
             ),

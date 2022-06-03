@@ -27,22 +27,34 @@ class BookingCubit extends Cubit<BookingState> {
     return [];
   }
 
-  addInfo(Map<dynamic, dynamic> info) {
-    BoxService.instance.addInfoToBox(info);
-    debugPrint(info.toString());
+  addInfo(Map info) {
+    if (!info.containsValue('')) {
+      BoxService.instance.addInfoToBox(info);
+    }
   }
 
-  Map<dynamic, dynamic> appointments = {};
+  Map appointments = {
+    "region": "",
+    "district": "",
+    "hospital": "",
+    "doctor's position": "",
+    "doctor": ""
+  };
 
   collectInfo(value, List items) {
-    debugPrint(appointments.toString());
-    appointments.addAll({
-      "name": items[0] == 'Mavlonov Boburjon' ? value : '',
-      "region": items[0] == 'Tashkent' ? value : "",
-      "district": items[0] == 'Shaykhontokhur District' ? value : "",
-      "hospital": items[0] == 'Pediatric hospital N4' ? value : "",
-      "expert": items[0] == 'Pediatric Pulmonolog' ? value : "",
-    });
+    for (var i = 0; i < HomeCubit.datainfo[0].length; i++) {
+      if (value == HomeCubit.datainfo[0][i]['region']) {
+        appointments.update('region', (e) => value);
+      } else if (value == HomeCubit.datainfo[0][i]['location']) {
+        appointments.update('district', (e) => value);
+      } else if (value == HomeCubit.datainfo[0][i]['place work']) {
+        appointments.update('hospital', (e) => value);
+      } else if (value == HomeCubit.datainfo[0][i]['expert']) {
+        appointments.update('doctor\'s position', (e) => value);
+      } else if (value == HomeCubit.datainfo[0][i]['name']) {
+        appointments.update('doctor', (e) => value);
+      }
+    }
     debugPrint(appointments.toString());
   }
 }

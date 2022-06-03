@@ -20,10 +20,9 @@ class PersonalIdView extends StatelessWidget {
     return Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: ButtonWidgets(
-          onPressed: () {
+            onPressed: () {
               debugPrint('tapped');
-              // go to next pages
-              NavigationService.instance.pushNamed('/home');
+              NavigationService.instance.pushNamedAndRemoveUntil('/home');
             },
             child: const Text('Go to your account')),
         body: SafeArea(
@@ -32,10 +31,15 @@ class PersonalIdView extends StatelessWidget {
               Container(
                 alignment: Alignment.center,
                 child: AppBarWidget(
+                    trailing: SizedBox(width: context.w * 0.15),
                     leading: BackButtonWidgets(
-                        ontap: () =>
-                            context.read<AuthCubit>().changeState(AuthConfirmation())),
-                    center: const Text("Your Personal ID", style: FontStyles.headline3s,)),
+                        ontap: () => context
+                            .read<AuthCubit>()
+                            .changeState(AuthConfirmation())),
+                    center: const Text(
+                      "Your Personal ID",
+                      style: FontStyles.headline3s,
+                    )),
               ),
               Expanded(
                   child: Padding(

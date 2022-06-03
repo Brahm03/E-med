@@ -7,6 +7,7 @@ import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/pages/home/state/home_state.dart';
 import 'package:emed/pages/home/view/pages/booking/cubit/booking_cubit.dart';
 import 'package:emed/service/getstorage.dart';
+import 'package:emed/widgets/alertDialog.dart';
 import 'package:emed/widgets/appbar.dart';
 import 'package:emed/widgets/buttonWidgets.dart';
 import 'package:emed/widgets/dropdown.dart';
@@ -26,12 +27,6 @@ class BookingPage extends StatelessWidget {
   Scaffold myscafold(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: ButtonWidgets(
-        child: const Text('Confirm'),
-        onPressed: () async {
-          // await context.read<BookingCubit>().addInfo(context.watch<BookingCubit>().appointments);
-        },
-      ),
       body: BlocBuilder<BookingCubit, BookingState>(
         builder: (context, state) {
           var data = context.watch<BookingCubit>();
@@ -39,20 +34,22 @@ class BookingPage extends StatelessWidget {
             child: Column(
               children: [
                 AppBarWidget(
-                    trailing: SizedBox(
-                      width: context.w * 0.050,
+                  trailing: SizedBox(
+                    width: context.w * 0.050,
+                  ),
+                  center: const Text(
+                    'Booking an appointment',
+                    style: FontStyles.headline3s,
+                  ),
+                  leading: InkWell(
+                    onTap: () => NavigationService.instance
+                        .pushNamedAndRemoveUntil('/home'),
+                    child: const Text(
+                      'cancel',
+                      style: FontStyles.headline3sblue,
                     ),
-                    center: const Text(
-                      'Booking an appointment',
-                      style: FontStyles.headline3s,
-                    ),
-                    leading: InkWell(
-                        onTap: () => NavigationService.instance
-                            .pushNamedAndRemoveUntil('/home'),
-                        child: const Text(
-                          'cancel',
-                          style: FontStyles.headline3sblue,
-                        ))),
+                  ),
+                ),
                 Expanded(
                     child: SingleChildScrollView(
                   child: Padding(
@@ -140,7 +137,20 @@ class BookingPage extends StatelessWidget {
                                   text: 'DD.MM.YYYY / HH:MM - HH:MM',
                                   items: const [])),
                         ),
-                        SizedBox(height: context.h * 0.1),
+                        SizedBox(height: context.h * 0.05),
+                        Center(
+                          child: ButtonWidgets(
+                            child: const Text('Confirm'),
+                            onPressed: () async {
+                              await context.read<BookingCubit>().addInfo(
+                                  data.appointments);
+                              AlertWidgets.showalertwidgets(
+                                  context: context,
+                                  ontap: () => NavigationService.instance
+                                      .pushNamedAndRemoveUntil('/home'));
+                            },
+                          ),
+                        ),
                       ],
                     ),
                   ),

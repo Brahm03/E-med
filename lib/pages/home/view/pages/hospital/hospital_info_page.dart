@@ -70,11 +70,11 @@ class HospitalInfoView extends StatelessWidget {
                     SizedBox(
                       height: context.h * 0.7,
                       child: ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (ctx, ind) {
                           return ListTile(
                             trailing: InkWell(
-                              child: Icon(Icons.chevron_right),
+                              child: const Icon(Icons.chevron_right),
                               onTap: () {
                                 context.read<HomeCubit>().changeToDinfo(info.dInfo[ind]);
                               },

@@ -4,7 +4,6 @@ import 'package:emed/models/doctors_info_model.dart';
 import 'package:emed/models/doctors_model.dart';
 import 'package:emed/models/hospital_model.dart';
 import 'package:emed/pages/home/state/home_state.dart';
-import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:flutter/services.dart' as bundle;
 
@@ -16,7 +15,6 @@ class HomeCubit extends Cubit<HomeState> {
   Future<List> getData() async {
     final data = await bundle.rootBundle.loadString('lib/mock/data.json');
     final list = jsonDecode(data) as List;
-    debugPrint(list.toString());
     datainfo.add(list);
     DoctorState(list);
     return list;
