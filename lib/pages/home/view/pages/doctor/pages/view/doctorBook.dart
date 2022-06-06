@@ -21,6 +21,8 @@ class DoctorBookPage extends StatelessWidget {
       floatingActionButton: ButtonWidgets(
           child: const Text('Confirm', style: FontStyles.headline3s),
           onPressed: () => AlertWidgets.showalertwidgets(
+              name: info['name'],
+              time: info['time'],
               context: context,
               ontap: () {
                 NavigationService.instance.pop;

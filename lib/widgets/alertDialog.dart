@@ -2,13 +2,12 @@ import 'package:emed/core/constants/color/colorConst.dart';
 import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/core/constants/icons/iconConst.dart';
 import 'package:emed/core/constants/radius/radiusConst.dart';
-import 'package:emed/core/init/navigator/NavigationService.dart';
 import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/widgets/buttonWidgets.dart';
 import 'package:flutter/material.dart';
 
 class AlertWidgets {
-  static void showalertwidgets({required BuildContext context,required VoidCallback ontap }) {
+  static void showalertwidgets({required String time,required String name,required BuildContext context,required VoidCallback ontap }) {
     showDialog(
         barrierColor: ColorConst.grey.withOpacity(0.5),
         context: context,
@@ -25,13 +24,13 @@ class AlertWidgets {
                       textAlign: TextAlign.center,
                     ),
                     Text(
-                      'You can go to name\non date time time',
+                      'You can go to $name\n on ${time.substring(0,10)}',
                       style: FontStyles.headline4s,
                       textAlign: TextAlign.center,
                     ),
                     ButtonWidgets(
-                        child: Text('Go home'),
-                        onPressed: ontap)
+                        onPressed: ontap,
+                        child: const Text('Go home'))
                   ]),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(RadiuConst.medium)),

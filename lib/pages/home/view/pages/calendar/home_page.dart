@@ -98,7 +98,7 @@ class HomePage extends StatelessWidget {
                                         itemCount: BoxService
                                             .instance.inputInfoBox.length,
                                         itemBuilder: (_, __) {
-                                          return DoctorsWidget(
+                                          return DateTime(2022, BoxService.instance.inputInfoBox.getAt(__)!['date'][0], BoxService.instance.inputInfoBox.getAt(__)!['date'][1]) == DateTime.now() ?DoctorsWidget(
                                             hospital: BoxService.instance.inputInfoBox.getAt(__)!['hospital'],
                                             expert: BoxService.instance.inputInfoBox.getAt(__)!['doctor\'s position'],
                                               pic: BoxService
@@ -106,7 +106,7 @@ class HomePage extends StatelessWidget {
                                                   .getAt(__)!['pic'].toString(),
                                               name: BoxService
                                                   .instance.inputInfoBox
-                                                  .getAt(__)!['doctor'].toString());
+                                                  .getAt(__)!['doctor'].toString()): const SizedBox() ;
                                         }) :  Center(
                                   child: Column(
                                     children: [

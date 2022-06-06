@@ -102,14 +102,14 @@ class BookingPage extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             DatePicker.showDatePicker(
-                                minTime: DateTime(2022, 6, 15),
+                                minTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
                                 currentTime: DateTime.now(),
                                 onConfirm: (time) => showModalBottomSheet(
                                     context: context,
                                     builder: (constext) {
                                       return Container(
                                         padding: PMconst.medium,
-                                        height: constext.h * 0.5,
+                                        height: constext.h * 0.6,
                                         color: ColorConst.white,
                                         child: Column(
                                           crossAxisAlignment:
@@ -130,15 +130,52 @@ class BookingPage extends StatelessWidget {
                                               style: FontStyles.headline4s,
                                             ),
                                             Container(
-                                              height: context.h * 0.35,
-                                              color: ColorConst.kPrimaryColor,
-                                              child: GridView.builder(
-                                                  gridDelegate:
-                                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                                          crossAxisCount: 4),
-                                                  itemBuilder: (__, _) {
-                                                    return Text(data.times[_][0]);
-                                                  }),
+                                              height: context.h * 0.4,
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 80.0),
+                                              child: Column(children: [
+                                                SizedBox(
+                                                  height: context.h * 0.3,
+                                                  child: GridView.builder(
+                                                      itemCount:
+                                                          data.times.length,
+                                                      gridDelegate:
+                                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                                              crossAxisCount: 2,
+                                                              mainAxisSpacing:
+                                                                  10,
+                                                              crossAxisSpacing:
+                                                                  10),
+                                                      itemBuilder: (__, _) {
+                                                        return InkWell(
+                                                            onTap: () => context
+                                                                .read<
+                                                                    BookingCubit>()
+                                                                .collectInfo(
+                                                                    data.times[
+                                                                        _],
+                                                                    [time.day, time.month]),
+                                                            child: Chip(
+                                                              label: Text(
+                                                                  '${data.times[_][0].toString()} : ${data.times[_][1].toString()}'),
+                                                            ));
+                                                      }),
+                                                ),
+                                                Align(
+                                                    alignment:
+                                                        Alignment.centerRight,
+                                                    child: ButtonWidgets(
+                                                        width: context.w * 0.2,
+                                                        height:
+                                                            context.h * 0.020,
+                                                        child: const Text('ok',
+                                                            style: FontStyles
+                                                                .headline3s),
+                                                        onPressed: () =>
+                                                            NavigationService
+                                                                .instance.pop))
+                                              ]),
                                             )
                                           ],
                                         ),
@@ -147,7 +184,6 @@ class BookingPage extends StatelessWidget {
                                 context,
                                 theme: DatePickerTheme(
                                     containerHeight: context.h * 0.4,
-                                    backgroundColor: ColorConst.white,
                                     headerColor: ColorConst.white));
                           },
                           child: SizedBox(
@@ -165,6 +201,9 @@ class BookingPage extends StatelessWidget {
                                   .read<BookingCubit>()
                                   .addInfo(data.appointments);
                               AlertWidgets.showalertwidgets(
+                                  time: DateTime(2022, data.month, data.day).toString(),
+                                  // ignore: use_build_context_synchronously
+                                  name: data.doctorname[data.index],
                                   context: context,
                                   ontap: () => NavigationService.instance
                                       .pushNamedAndRemoveUntil('/home'));
