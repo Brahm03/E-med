@@ -9,8 +9,9 @@ class DoctorsWidget extends StatelessWidget {
   final String name;
   final String pic;
   final String expert;
+  final Widget trailing;
   final String hospital;
-  const DoctorsWidget({this.hospital = '',this.expert = '',required this.pic, required this.name, Key? key})
+  const DoctorsWidget({this.trailing = const Icon(IconConst.arrow) ,this.hospital = '',this.expert = '',required this.pic, required this.name, Key? key})
       : super(key: key);
 
   @override
@@ -20,7 +21,7 @@ class DoctorsWidget extends StatelessWidget {
         child: Column(children: [
           ListTile(
             subtitle: Text('$expert  \n$hospital', style: FontStyles.headline4s,),
-            trailing: Icon(IconConst.arrow),
+            trailing: IconButton(splashRadius: RadiuConst.small,onPressed: (){}, icon: trailing), 
             leading: ClipRRect(
               borderRadius: BorderRadius.circular(RadiuConst.extraLarge),
               child: FadeInImage(

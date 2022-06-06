@@ -44,6 +44,9 @@ dependencies:
   dropdown_button2: ^1.5.2
   hive_flutter: ^1.1.0
   path_provider: ^2.0.10
+  mask_input_formatter: ^0.0.3
+  mask_text_input_formatter: ^2.3.0
+  flutter_datetime_picker: ^1.5.1
 
 dev_dependencies:
   flutter_test:

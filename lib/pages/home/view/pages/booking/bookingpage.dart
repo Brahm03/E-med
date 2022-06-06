@@ -1,19 +1,18 @@
 import 'package:emed/core/constants/PM/pMconst.dart';
 import 'package:emed/core/constants/color/colorConst.dart';
 import 'package:emed/core/constants/font/fontStyles.dart';
-import 'package:emed/core/constants/radius/radiusConst.dart';
 import 'package:emed/core/init/navigator/NavigationService.dart';
 import 'package:emed/extension/sizeExtension.dart';
 import 'package:emed/pages/home/state/home_state.dart';
 import 'package:emed/pages/home/view/pages/booking/cubit/booking_cubit.dart';
-import 'package:emed/service/getstorage.dart';
 import 'package:emed/widgets/alertDialog.dart';
 import 'package:emed/widgets/appbar.dart';
+import 'package:emed/widgets/buckbutton.dart';
 import 'package:emed/widgets/buttonWidgets.dart';
 import 'package:emed/widgets/dropdown.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class BookingPage extends StatelessWidget {
   const BookingPage({Key? key}) : super(key: key);
@@ -102,34 +101,54 @@ class BookingPage extends StatelessWidget {
                             style: FontStyles.headline4sbold),
                         InkWell(
                           onTap: () {
-                            showModalBottomSheet(
-                                backgroundColor: Colors.transparent,
-                                context: context,
-                                builder: (context) {
-                                  return Container(
-                                    padding: PMconst.medium,
-                                    margin: PMconst.medium,
-                                    decoration: BoxDecoration(
+                            DatePicker.showDatePicker(
+                                minTime: DateTime(2022, 6, 15),
+                                currentTime: DateTime.now(),
+                                onConfirm: (time) => showModalBottomSheet(
+                                    context: context,
+                                    builder: (constext) {
+                                      return Container(
+                                        padding: PMconst.medium,
+                                        height: constext.h * 0.5,
                                         color: ColorConst.white,
-                                        borderRadius: BorderRadius.circular(
-                                            RadiuConst.medium)),
-                                    child: CupertinoDatePicker(
-                                      onDateTimeChanged: (v) async {
-                                        await Storageservice.instance.storage
-                                            .write('day', v.day);
-                                        await Storageservice.instance.storage
-                                            .write('houre', v.hour);
-                                        await Storageservice.instance.storage
-                                            .write('month', v.month);
-                                        debugPrint(Storageservice
-                                            .instance.storage
-                                            .read('month')
-                                            .toString());
-                                      },
-                                      mode: CupertinoDatePickerMode.dateAndTime,
-                                    ),
-                                  );
-                                });
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            AppBarWidget(
+                                              leading: BackButtonWidgets(
+                                                ontap: () => NavigationService
+                                                    .instance.pop,
+                                              ),
+                                              center: Text(
+                                                '${time.month} | ${time.day} | ${time.year}',
+                                                style: FontStyles.headline3s,
+                                              ),
+                                            ),
+                                            const Text(
+                                              'CHOOSE TIME',
+                                              style: FontStyles.headline4s,
+                                            ),
+                                            Container(
+                                              height: context.h * 0.35,
+                                              color: ColorConst.kPrimaryColor,
+                                              child: GridView.builder(
+                                                  gridDelegate:
+                                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                                          crossAxisCount: 4),
+                                                  itemBuilder: (__, _) {
+                                                    return Text(data.times[_][0]);
+                                                  }),
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                                context,
+                                theme: DatePickerTheme(
+                                    containerHeight: context.h * 0.4,
+                                    backgroundColor: ColorConst.white,
+                                    headerColor: ColorConst.white));
                           },
                           child: SizedBox(
                               height: context.h * 0.1,
@@ -142,8 +161,9 @@ class BookingPage extends StatelessWidget {
                           child: ButtonWidgets(
                             child: const Text('Confirm'),
                             onPressed: () async {
-                              await context.read<BookingCubit>().addInfo(
-                                  data.appointments);
+                              await context
+                                  .read<BookingCubit>()
+                                  .addInfo(data.appointments);
                               AlertWidgets.showalertwidgets(
                                   context: context,
                                   ontap: () => NavigationService.instance

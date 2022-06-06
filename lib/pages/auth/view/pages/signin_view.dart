@@ -1,4 +1,5 @@
 import 'package:emed/core/components/allvalidators.dart';
+import 'package:emed/core/components/mask/masks.dart';
 import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/core/constants/icons/iconConst.dart';
 import 'package:emed/core/constants/radius/radiusConst.dart';
@@ -65,6 +66,7 @@ class SignInView extends StatelessWidget {
                               style: FontStyles.headline3s),
                           SizedBox(height: context.h * 0.01),
                           MyTextField.textField(
+                              formatter: [Masks.instance.maks],
                               text: "Enter your phone number...",
                               controller: phoneController,
                               validator: Allvalidators.phoneValidator),

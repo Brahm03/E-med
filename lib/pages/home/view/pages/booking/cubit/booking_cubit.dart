@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:emed/pages/home/cubit/home_cubit.dart';
 import 'package:emed/pages/home/state/home_state.dart';
 import 'package:emed/service/Boxservice.dart';
+import 'package:emed/service/getstorage.dart';
 import 'package:flutter/material.dart';
 
 class BookingCubit extends Cubit<BookingState> {
@@ -14,6 +15,7 @@ class BookingCubit extends Cubit<BookingState> {
   List hospital = [];
   List doctorposition = [];
   List doctorname = [];
+  List times = [];
 
   List infoReturner() {
     for (var i = 0; i < HomeCubit.datainfo[0].length; i++) {
@@ -23,6 +25,7 @@ class BookingCubit extends Cubit<BookingState> {
       hospital.add(HomeCubit.datainfo[0][i]['place work']);
       doctorposition.add(HomeCubit.datainfo[0][i]['expert']);
       doctorname.add(HomeCubit.datainfo[0][i]['name']);
+      times.add(HomeCubit.datainfo[0][i]['time']);
     }
     return [];
   }
@@ -38,7 +41,9 @@ class BookingCubit extends Cubit<BookingState> {
     "district": "",
     "hospital": "",
     "doctor's position": "",
-    "doctor": ""
+    "doctor": "",
+    "pic": '',
+    "time": Storageservice.instance.storage.read('day')
   };
 
   collectInfo(value, List items) {
@@ -53,6 +58,7 @@ class BookingCubit extends Cubit<BookingState> {
         appointments.update('doctor\'s position', (e) => value);
       } else if (value == HomeCubit.datainfo[0][i]['name']) {
         appointments.update('doctor', (e) => value);
+        appointments.update('pic', (e) => HomeCubit.datainfo[0][i]['pic']);
       }
     }
     debugPrint(appointments.toString());

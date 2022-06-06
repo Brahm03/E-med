@@ -4,9 +4,12 @@ import 'package:emed/core/constants/font/fontStyles.dart';
 import 'package:emed/core/constants/icons/iconConst.dart';
 import 'package:emed/core/init/navigator/NavigationService.dart';
 import 'package:emed/extension/sizeExtension.dart';
+import 'package:emed/service/Boxservice.dart';
 import 'package:emed/widgets/appbar.dart';
 import 'package:emed/widgets/buttonWidgets.dart';
 import 'package:emed/widgets/calendarwidget.dart';
+import 'package:emed/widgets/doctorWidgetSmall.dart';
+import 'package:emed/widgets/doctorsWidget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -88,9 +91,38 @@ class HomePage extends StatelessWidget {
                                     'Today\'s appointments',
                                     style: FontStyles.headline5s,
                                   ),
-                                  Container(
+                                  SizedBox(height: context.h * 0.03),
+                                  SizedBox(
                                     height: context.h * 0.4,
-                                    color: ColorConst.kPrimaryColor,
+                                    child: BoxService.instance.inputInfoBox.isNotEmpty ? ListView.builder(
+                                        itemCount: BoxService
+                                            .instance.inputInfoBox.length,
+                                        itemBuilder: (_, __) {
+                                          return DoctorsWidget(
+                                            hospital: BoxService.instance.inputInfoBox.getAt(__)!['hospital'],
+                                            expert: BoxService.instance.inputInfoBox.getAt(__)!['doctor\'s position'],
+                                              pic: BoxService
+                                                  .instance.inputInfoBox
+                                                  .getAt(__)!['pic'].toString(),
+                                              name: BoxService
+                                                  .instance.inputInfoBox
+                                                  .getAt(__)!['doctor'].toString());
+                                        }) :  Center(
+                                  child: Column(
+                                    children: [
+                                      const Text(
+                                        'No medications',
+                                        style: FontStyles.headline2s,
+                                      ),
+                                      SizedBox(height: context.h * 0.040),
+                                      const Text(
+                                        'They will appear here only when doctor\nadds them to your account.',
+                                        style: FontStyles.headline4s,
+                                        textAlign: TextAlign.center,
+                                      )
+                                    ],
+                                  ),
+                                ),
                                   ),
                                   SizedBox(height: context.h * 0.040),
                                   Center(
