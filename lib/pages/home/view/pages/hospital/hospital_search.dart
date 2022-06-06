@@ -74,7 +74,7 @@ class HospitalSearchView extends StatelessWidget {
                                       Positioned(
                                         left: 12,
                                         child: SizedBox(
-                                          width: context.w * 0.28,
+                                          width: context.w * 0.3,
                                           child: Chip(
                                               label: Row(
                                             children: [
@@ -92,7 +92,7 @@ class HospitalSearchView extends StatelessWidget {
                                       Positioned(
                                         left: 139,
                                         child: SizedBox(
-                                          width: context.w * 0.32,
+                                          width: context.w * 0.35,
                                           child: Chip(
                                             label: Row(
                                               children: [
