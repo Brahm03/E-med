@@ -18,7 +18,7 @@ class AppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: context.h * 0.06,
+      height: context.h * 0.07,
       child: Padding(
         padding: PMconst.extraSmall,
         child: Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
